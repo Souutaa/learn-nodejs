@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "watch": "node-sass --watch src/resources/scss/app.scss src/public/css/app.css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec ./node_modules/.bin/babel-node src/server.js"
   },
@@ -26,6 +27,7 @@
     "ejs": "3.1.6",
     "express": "4.17.1",
     "mysql2": "2.3.0",
+    "node-sass": "^9.0.0",
     "nodemon": "2.0.12"
   }
 }
