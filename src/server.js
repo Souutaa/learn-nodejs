@@ -1,20 +1,29 @@
-import express from "express";
-import configViewEngine from "./configs/viewEngine";
-import initWebRoute from "./routes/web";
+import express from 'express';
+import bodyParser from 'body-parser';
+import viewEngine from './configs/viewEngine';
+import initWebRoute from './routes/web';
 //import connection from "./configs/connectDB";
-
-require("dotenv").config();
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-console.log("check port", port);
+
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+console.log('check port', port);
 
 //setup view engine
-configViewEngine(app);
+viewEngine(app);
 
 //init web route
 initWebRoute(app);
 
 app.listen(port, () => {
-  console.log(`listening at http://localhost:${port}`);
+  console.log('----------------------------------------------------');
+  console.log(`Backend Nodejs is running on http://localhost:${port}`);
+  console.log('----------------------------------------------------');
 });
