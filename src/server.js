@@ -1,8 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import viewEngine from './configs/viewEngine';
+import viewEngine from './config/viewEngine';
 import initWebRoute from './routes/web';
-//import connection from "./configs/connectDB";
+import connectDB from './config/connectDB';
 require('dotenv').config();
 
 const app = express();
@@ -21,6 +21,8 @@ viewEngine(app);
 
 //init web route
 initWebRoute(app);
+
+connectDB();
 
 app.listen(port, () => {
   console.log('----------------------------------------------------');
